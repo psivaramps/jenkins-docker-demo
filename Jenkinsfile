@@ -24,17 +24,15 @@ pipeline {
 		}
 
 			
-		stage('Push Docker Image') {
-			steps {
-				script {
-					docker.withRegistry( 'https://registry.hub.docker.com', 'spamarthy' ) {
-						dockerImage.push()
-						dockerImage.push('latest')
-					}
-				}
-			}
-			
-		}
+		stage('Push Docker Image to Docker Hub') {
+	            steps {
+	                script {
+	                    docker.withRegistry('https://registry.hub.docker.com', 'spamarthy') {
+	                        dockerImage.push()
+	                    }
+	                }
+	            }
+	        }
 		
 		stage ('Run a Docker container') {
 			steps {
