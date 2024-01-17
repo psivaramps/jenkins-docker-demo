@@ -26,7 +26,7 @@ pipeline {
 			steps {
 			//sh 'docker build -t my-java-app:0.1 .'
 			script {
-					dockerImage = docker.build("spamarthy/my-java-app:${env.BUILD_TAG}")
+					dockerImage = docker.build("spamarthy/my-java-app:0.1)
 				}
 			}
 		}
