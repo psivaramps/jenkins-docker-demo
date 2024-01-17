@@ -26,5 +26,12 @@ pipeline {
                 }
             }
         }
+        stage('Check Application with curl') {
+            steps {
+                script {
+                    sh "curl -f http://localhost:5000"  // Replace PORT and ENDPOINT
+        }
+    }
+}
     }
 }
