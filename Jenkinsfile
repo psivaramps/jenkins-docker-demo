@@ -19,22 +19,11 @@ pipeline {
 
 		stage ('Build Image') {
 			steps {
-			sh 'docker build -t my-java-app:0.1 .'
+			sh 'docker build -t spamarthy/my-java-app:${env.BUILD_NUMBER} .'
 			}
 		}
 
-		stage ('Tag the local image') {
-			steps {
-			sh 'docker tag "my-java-app:0.1" spamarthy/my-java-app:0.1'
-			}
-		}
-		
-		stage ('Run a Docker container') {
-			steps {
-			sh 'docker run -p 5000:5000 spamarthy/my-java-app:0.1'
-			}
-		}
-	
+			
 		stage('Push Docker Image') {
 			steps {
 				script {
@@ -46,10 +35,18 @@ pipeline {
 			}
 			
 		}
+		
+		stage ('Run a Docker container') {
+			steps {
+			sh 'docker run -p 5000:5000 spamarthy/my-java-app:${env.BUILD_NUMBER}'
+			}
+		}
+		
+		
 		stage('Check Application with curl') {
    			 steps {
        				 script {
-           				 sh "curl -f http://localhost:5050"  // Replace PORT and ENDPOINT
+           				 sh "curl -f http://localhost:5000"  // Replace PORT and ENDPOINT
        					 }
    				 }
 			}
