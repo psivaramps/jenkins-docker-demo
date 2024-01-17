@@ -24,7 +24,10 @@ pipeline {
 
 		stage ('Build Image') {
 			steps {
-			sh 'docker build -t my-java-app:0.1 .'
+			//sh 'docker build -t my-java-app:0.1 .'
+			script {
+					dockerImage = docker.build("spamarthy/my-java-app:${env.BUILD_TAG}")
+				}
 			}
 		}
 
@@ -40,11 +43,11 @@ pipeline {
 			}
 		}
 	/*	stage('Get Local Host IP') {
-            steps {
-                script {
-                    // Get the hostname of the agent
-                    hostname = sh(returnStdout: true, script: 'hostname -f').trim()> appip.txt
-					sh 'curl http://$(cat appip.txt):5000'
+            		steps {
+                		script {
+                  		  // Get the hostname of the agent
+                   		 hostname = sh(returnStdout: true, script: 'hostname -f').trim()> appip.txt
+				 sh 'curl http://$(cat appip.txt):5000'
                 }
             }*/
 
