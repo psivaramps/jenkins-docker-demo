@@ -1,14 +1,19 @@
 pipeline {
     
- agent any 
+// agent any 
 	// agent { docker { image 'maven:3.9.6'} }
 	// agent { docker { image 'node:13.8'} }
-	environment {
-		dockerHome = tool 'myDocker'
-		mavenHome = tool 'myMaven'
-		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
-	}
-     	
+	//environment {
+		//dockerHome = tool 'myDocker'
+		//mavenHome = tool 'myMaven'
+		//PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	//}
+  	agent {
+        	docker {
+          	  image 'docker:stable'
+          	  args '-v /var/run/docker.sock:/var/run/docker.sock'
+       		 }
+   	 }   	
 	stages {
 
         stage ('Checkout') {
