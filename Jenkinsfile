@@ -19,7 +19,7 @@ pipeline {
 
 		stage ('Build Image') {
 			steps {
-			sh 'docker build -t spamarthy/my-java-app:${env.BUILD_NUMBER} .'
+			sh 'docker build -t spamarthy/my-java-app:0.1 .'
 			}
 		}
 
