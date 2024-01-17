@@ -6,7 +6,7 @@ pipeline {
 
         stage ('Checkout') {
 			steps {
-			git branch : 'main' , url: 'https://github.com/psivaramps/<>.git'
+			git branch : 'main' , url: 'https://github.com/psivaramps/jenkins-docker-demo.git'
 			}
 		}
 				
