@@ -31,7 +31,7 @@ pipeline {
 		
 		stage ('Run a Docker container') {
 			steps {
-			sh 'docker run -p 5050:5050 spamarthy/my-java-app:0.1'
+			sh 'docker run -p 5050:5000 spamarthy/my-java-app:0.1'
 			}
 		}
 	
@@ -49,7 +49,7 @@ pipeline {
 		stage('Check Application with curl') {
    			 steps {
        				 script {
-           				 sh "curl -f http://localhost:5000"  // Replace PORT and ENDPOINT
+           				 sh "curl -f http://localhost:5050"  // Replace PORT and ENDPOINT
        					 }
    				 }
 			}
