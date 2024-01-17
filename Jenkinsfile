@@ -38,7 +38,7 @@ pipeline {
 		
 		stage ('Run a Docker container') {
 			steps {
-			sh 'docker run -p 5000:5000 spamarthy/my-java-app:${env.BUILD_NUMBER}'
+			sh 'docker run -p 5000:5000 -d spamarthy/my-java-app:${env.BUILD_NUMBER}'
 			}
 		}
 		
