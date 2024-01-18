@@ -27,9 +27,9 @@ pipeline {
             }
         }
         stage('Run Container') {
-        steps {
-            script {
-                dockerImage.inside {
+            steps {
+           // script {
+            //    dockerImage.inside {
                     // Commands to run within the container
                     sh 'docker run -p 5000:5000 -d spamarthy/my-java-app:0.1'  // Replace with actual command
             }
