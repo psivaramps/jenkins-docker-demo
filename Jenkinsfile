@@ -26,6 +26,16 @@ pipeline {
                 }
             }
         }
+        stage('Run Container') {
+        steps {
+            script {
+                dockerImage.inside {
+                    // Commands to run within the container
+                    sh 'spamarthy/my-java-app:${env.BUILD_NUMBER}'  // Replace with actual command
+            }
+        }
+    }
+}
         stage('Check Application with curl') {
             steps {
                 script {
