@@ -40,7 +40,7 @@ pipeline {
           stage('Check Application with curl') {
             steps {
                 script {
-                    sh "curl -f http://DOCKER_HOST_IP:5000"
+                    sh "curl -f http://10.0.0.10:5000"
                     //sh "curl -f http://localhost:5000"  // Replace PORT and ENDPOINT
                         }
                     }
