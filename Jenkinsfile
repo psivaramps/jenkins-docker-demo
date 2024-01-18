@@ -26,16 +26,27 @@ pipeline {
                 }
             }
         }
-        stage('Run Container') {
+
+
+        stage('Run Container from Docker Hub') {
             steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'spamarthy') {  // Use credentials for Docker Hub access
+                    docker.image("spamarthy/my-java-app:${env.BUILD_NUMBER}").run('-p 5000:5000 -d')
+            }
+        }
+    }
+//}
+  //      stage('Run Container') {
+   //         steps {
            // script {
             //    dockerImage.inside {
                     // Commands to run within the container
-                    sh 'docker run -p 5000:5000 -d spamarthy/my-java-app'  // Replace with actual command
+ //                   sh 'docker run -p 5000:5000 -d spamarthy/my-java-app'  // Replace with actual command
           //  }
        // }
-    }
-}
+//    }
+//}
         stage('Check Application with curl') {
             steps {
                 script {
