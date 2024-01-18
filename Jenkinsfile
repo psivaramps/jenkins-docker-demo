@@ -31,7 +31,7 @@ pipeline {
             script {
                 dockerImage.inside {
                     // Commands to run within the container
-                    sh 'docker run -p 5000:5000 -d spamarthy/my-java-app:${env.BUILD_NUMBER}'  // Replace with actual command
+                    sh 'docker run -p 5000:5000 -d spamarthy/my-java-app:0.1'  // Replace with actual command
             }
         }
     }
