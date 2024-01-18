@@ -37,23 +37,14 @@ pipeline {
         }
     }
 }
-  //      stage('Run Container') {
-   //         steps {
-           // script {
-            //    dockerImage.inside {
-                    // Commands to run within the container
- //                   sh 'docker run -p 5000:5000 -d spamarthy/my-java-app'  // Replace with actual command
-          //  }
-       // }
-//    }
-//}
-        stage('Check Application with curl') {
+          stage('Check Application with curl') {
             steps {
                 script {
-                    sh "curl -f http://localhost:5000"  // Replace PORT and ENDPOINT
-        }
-    }
-}
+                    sh "curl -f http://DOCKER_HOST_IP:5000"
+                    //sh "curl -f http://localhost:5000"  // Replace PORT and ENDPOINT
+                        }
+                    }
+            }
     }
 }
 
